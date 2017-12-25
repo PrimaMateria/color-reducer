@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/_ColorTable.scss'
 
 class ColorTable extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class ColorTable extends React.Component {
     tbody.push(<HeaderPreviewRow key="previewX" colors={this.state.colors}/>);
 
     return (
-      <table>
+      <table className="colorTable">
         <tbody>
           {tbody}
         </tbody>
@@ -60,10 +61,12 @@ class HeaderPreviewRow extends React.Component {
       let cells = [];
       for (const i in this.state.colors) {
         let color = this.state.colors[i];
+
         let cellStyle = {
-          backgroundColor: color
-        }
-        cells.push(<td key={color} className="previewCell" style={cellStyle}></td>);
+          backgroundColor: '#' + color
+        };
+
+        cells.push(<td key={color} className="previewCell" style={cellStyle} ></td>);
       }
 
       return (
