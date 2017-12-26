@@ -1,7 +1,9 @@
 import React from 'react';
 import ColorTable from '../components/ColorTable'
+import ColorList from '../components/ColorList'
 import createDeltaEMatrice from '../lib/createDeltaEMatrice'
 import reduce from '../lib/reduce'
+import blend from '../lib/blend'
 
 const Home = function() {
   const colors = [
@@ -26,15 +28,22 @@ const Home = function() {
     'E41B17'
   ];
 
+  const maxDistance = 3;
   const matrice = createDeltaEMatrice(colors);
-  const reducedColors = reduce(colors);
+
+  let clusters = reduce(colors, maxDistance);
+
+  const reducedColors = blend(clusters);
   const reducedMatrice = createDeltaEMatrice(reducedColors);
 
   return (
     <div>
-      <h2>Home Page</h2>
-      <ColorTable colors={colors} matrice={matrice}/>
-      <ColorTable colors={reducedColors} matrice={reducedMatrice}/>
+      <h2>Original pallete</h2>
+      <ColorTable colors={colors} matrice={matrice} maxDistance={maxDistance}/>
+      <h2>Merged colors</h2>
+      <ColorList clusters={clusters}/>
+      <h2>Reduced pallete</h2>
+      <ColorTable className="center" colors={reducedColors} matrice={reducedMatrice} maxDistance={maxDistance}/>
     </div>
   );
 

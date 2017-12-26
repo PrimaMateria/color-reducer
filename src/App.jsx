@@ -17,10 +17,6 @@ const App = () => (
         <div>
           <h1>Color Reducer</h1>
         </div>
-        <ul className="left">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-        </ul>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />

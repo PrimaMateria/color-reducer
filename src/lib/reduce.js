@@ -22,18 +22,7 @@ function reduce(colors, maxDistance = 10) {
       return colors[index];
     });
   });
-  console.log(clusters);
-
-  return blend(clusters);
-}
-
-function blend(clusters) {
-  let blended = []
-  for (let i in clusters) {
-    let cluster = clusters[i];
-    blended.push(mix(cluster));
-  }
-  return blended;
+  return clusters;
 }
 
 export default reduce;

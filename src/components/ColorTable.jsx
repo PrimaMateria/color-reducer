@@ -6,7 +6,8 @@ class ColorTable extends React.Component {
     super(props);
     this.state = {
       colors: props.colors,
-      matrice: props.matrice
+      matrice: props.matrice,
+      maxDistance: props.maxDistance
     }
   }
 
@@ -21,6 +22,7 @@ class ColorTable extends React.Component {
           key={x}
           color={this.state.colors[x]}
           distances={this.state.matrice[x]}
+          maxDistance={this.state.maxDistance}
           />);
     }
 
@@ -126,7 +128,7 @@ class Row extends React.Component {
     this.state = {
       color: props.color,
       distances: props.distances,
-      minimum: props.minimum
+      maxDistance: props.maxDistance
     }
   }
 
@@ -143,7 +145,7 @@ class Row extends React.Component {
       let distance = distances[i];
 
       let distanceClass;
-      if (distance < 10) {
+      if (distance < this.state.maxDistance) {
          distanceClass = "lowDistance";
       }
 
