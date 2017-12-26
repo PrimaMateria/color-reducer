@@ -7,25 +7,25 @@ import blend from '../lib/blend'
 
 const Home = function() {
   const colors = [
-    '0066CC',
-    '15428B',
-    '204268',
-    '333333',
-    '3F3F3F',
-    '444444',
-    '455668',
-    '477CCD',
-    '4C4C4C',
-    '4D4D4D',
-    '666666',
-    '6E809A',
-    '808080',
-    '8B8C8E',
-    'AAAAAA',
-    'ABABAB',
-    'CCCCCC',
-    'D9D9D9',
-    'E41B17'
+    '#0066CC',
+    '#15428B',
+    '#204268',
+    '#333333',
+    '#3F3F3F',
+    '#444444',
+    '#455668',
+    '#477CCD',
+    '#4C4C4C',
+    '#4D4D4D',
+    '#666666',
+    '#6E809A',
+    '#808080',
+    '#8B8C8E',
+    '#AAAAAA',
+    '#ABABAB',
+    '#CCCCCC',
+    '#D9D9D9',
+    '#E41B17'
   ];
 
   const maxDistance = 3;

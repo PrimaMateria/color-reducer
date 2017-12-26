@@ -5,8 +5,7 @@ function getDistance(a, b) {
 }
 
 function mix(colors = []) {
-  let mixed = chroma.average(colors).hex();
-  return mixed.substr(1, mixed.length - 1);
+  return chroma.average(colors).hex();
 }
 
 export {

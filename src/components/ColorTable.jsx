@@ -101,7 +101,7 @@ class PreviewCell extends React.Component {
   render() {
     let color = this.state.color;
     let cellStyle = {
-      backgroundColor: '#' + color
+      backgroundColor: color
     };
 
     return (<td className="previewCell" style={cellStyle} ></td>);
@@ -118,7 +118,7 @@ class NameCell extends React.Component {
 
   render() {
     let color = this.state.color;
-    return (<td>#{color}</td>);
+    return (<td>{color}</td>);
   }
 }
 

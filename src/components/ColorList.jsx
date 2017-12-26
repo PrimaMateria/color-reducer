@@ -21,7 +21,7 @@ class ColorList extends React.Component {
           let color = cluster[j];
 
           let previewStyle = {
-            backgroundColor: '#' + color
+            backgroundColor: color
           };
 
           colors.push(
