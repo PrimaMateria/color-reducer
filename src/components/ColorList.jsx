@@ -32,7 +32,7 @@ class ColorList extends React.Component {
           );
         }
         rows.push(
-          <div key={"cluster" + i}>
+          <div key={"cluster" + i} className="card">
             <h3>Cluster {i}</h3>
             {colors}
           </div>
