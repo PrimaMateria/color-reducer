@@ -1,0 +1,15 @@
+.colorTable {
+  table-layout: fixed;
+  font-size: x-small;
+  font-family: "Courier"
+}
+
+.previewCell {
+  min-width: 20px;
+  height: 20px;
+  border: 1px solid #000000;
+}
+
+.lowDistance {
+  background-color: lightgreen;
+}

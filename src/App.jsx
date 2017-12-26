@@ -15,9 +15,7 @@ const App = () => (
     <HashRouter>
       <main className="container">
         <div>
-          <h1>hello world!</h1>
-          <img className="container__image" alt="react logo" src={reactLogo} />
-          <p>If you see this everything is working!</p>
+          <h1>Color Reducer</h1>
         </div>
         <ul className="left">
           <li><Link to="/">Home</Link></li>
