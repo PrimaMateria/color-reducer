@@ -4,13 +4,12 @@ import './_ColorList.scss'
 class ColorList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      clusters: props.clusters
-    }
   }
 
   render() {
-    let clusters = this.state.clusters;
+    let clusters = this.props.clusters;
+    console.log(clusters);
+
     let rows = [];
     for (let i in clusters) {
       let cluster = clusters[i];

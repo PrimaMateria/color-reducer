@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Home from './containers/Home';
+import Reducer from './containers/Reducer';
 import About from './containers/About';
 
 import reactLogo from './assets/React-icon.png';
@@ -18,7 +18,7 @@ const App = () => (
           <h1>Color Reducer</h1>
         </div>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Reducer} />
           <Route path="/about" component={About} />
         </Switch>
       </main>

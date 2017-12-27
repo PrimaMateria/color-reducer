@@ -4,25 +4,23 @@ import './_ColorTable.scss'
 class ColorTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      colors: props.colors,
-      matrice: props.matrice,
-      maxDistance: props.maxDistance
-    }
   }
 
   render() {
-    let tbody = [];
-    tbody.push(<HeaderNameRow key="nameX" colors={this.state.colors}/>);
-    tbody.push(<HeaderPreviewRow key="previewX" colors={this.state.colors}/>);
+    console.log("color table render")
+    console.log(this.props.maxDistance)
 
-    for (const x in this.state.matrice) {
+    let tbody = [];
+    tbody.push(<HeaderNameRow key="nameX" colors={this.props.colors}/>);
+    tbody.push(<HeaderPreviewRow key="previewX" colors={this.props.colors}/>);
+
+    for (const x in this.props.matrice) {
       tbody.push(
         <Row
           key={x}
-          color={this.state.colors[x]}
-          distances={this.state.matrice[x]}
-          maxDistance={this.state.maxDistance}
+          color={this.props.colors[x]}
+          distances={this.props.matrice[x]}
+          maxDistance={this.props.maxDistance}
           />);
     }
 
@@ -40,9 +38,6 @@ class ColorTable extends React.Component {
 class HeaderNameRow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      colors: props.colors
-    }
   }
 
   render() {
@@ -50,8 +45,8 @@ class HeaderNameRow extends React.Component {
     cells.push(<td key="dummyNameX"/>);
     cells.push(<td key="dummyPreviewX"/>);
 
-    for (const i in this.state.colors) {
-      let color = this.state.colors[i];
+    for (const i in this.props.colors) {
+      let color = this.props.colors[i];
       cells.push(<NameCell key={"name-x-"+color} color={color}/>);
     }
 
@@ -66,9 +61,6 @@ class HeaderNameRow extends React.Component {
 class HeaderPreviewRow extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
-        colors: props.colors
-      }
     }
 
     render() {
@@ -76,8 +68,8 @@ class HeaderPreviewRow extends React.Component {
       cells.push(<td key="dummyNameX"/>);
       cells.push(<td key="dummyPreviewX"/>);
 
-      for (const i in this.state.colors) {
-        let color = this.state.colors[i];
+      for (const i in this.props.colors) {
+        let color = this.props.colors[i];
 
         cells.push(<PreviewCell key={"preview-x-"+color} color={color}/>);
       }
@@ -93,13 +85,10 @@ class HeaderPreviewRow extends React.Component {
 class PreviewCell extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      color: props.color
-    }
   }
 
   render() {
-    let color = this.state.color;
+    let color = this.props.color;
     let cellStyle = {
       backgroundColor: color
     };
@@ -111,13 +100,10 @@ class PreviewCell extends React.Component {
 class NameCell extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      color: props.color
-    }
   }
 
   render() {
-    let color = this.state.color;
+    let color = this.props.color;
     return (<td>{color}</td>);
   }
 }
@@ -125,18 +111,12 @@ class NameCell extends React.Component {
 class Row extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      color: props.color,
-      distances: props.distances,
-      maxDistance: props.maxDistance
-    }
   }
 
   render() {
     let cells = [];
-    let color = this.state.color;
-    let distances = this.state.distances;
-    let minimum = this.state.minimum;
+    let color = this.props.color;
+    let distances = this.props.distances;
 
     cells.push(<NameCell key={"name-y-"+color} color={color}/>);
     cells.push(<PreviewCell key={"preview-y-"+color} color={color}/>);
@@ -145,7 +125,7 @@ class Row extends React.Component {
       let distance = distances[i];
 
       let distanceClass;
-      if (distance < this.state.maxDistance) {
+      if (distance < this.props.maxDistance) {
          distanceClass = "lowDistance";
       }
 

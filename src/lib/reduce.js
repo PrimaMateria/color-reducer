@@ -1,13 +1,13 @@
 import Math from 'math'
 import cluster from 'hierarchical-clustering'
-import {getDistance, mix} from './utils'
+import {getDistance} from './utils'
 
 function linkage(distances) {
   let min = Math.min.apply(null, distances);
   return min;
 }
 
-function reduce(colors, maxDistance = 10) {
+function reduce(colors, maxDistance) {
   let levels = cluster({
     input: colors,
     distance: getDistance,
@@ -22,6 +22,7 @@ function reduce(colors, maxDistance = 10) {
       return colors[index];
     });
   });
+
   return clusters;
 }
 
