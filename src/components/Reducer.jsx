@@ -35,11 +35,11 @@ class Reducer extends React.Component {
     if (colors != undefined && colors.length != 0 && maxDistance != undefined) {
       report = (
         <div>
-          <h2>Original pallete</h2>
+          <h2>Original palette</h2>
           <ColorTable colors={this.state.colors} matrice={this.state.matrice} maxDistance={maxDistance}/>
           <h2>Merged colors</h2>
           <ColorList clusters={this.state.clusters}/>
-          <h2>Reduced pallete</h2>
+          <h2>Reduced palette</h2>
           <ColorTable colors={this.state.reducedColors} matrice={this.state.reducedMatrice} maxDistance={maxDistance}/>
         </div>
       )
