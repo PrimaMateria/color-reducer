@@ -25,11 +25,14 @@ class ColorTable extends React.Component {
     }
 
     return (
-      <table className="colorTable">
-        <tbody>
-          {tbody}
-        </tbody>
-      </table>
+      <div>
+        <span>Colors count: {this.props.colors.length}</span>
+        <table className="colorTable">
+          <tbody>
+            {tbody}
+          </tbody>
+        </table>
+      </div>
     );
   }
 
