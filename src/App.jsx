@@ -6,8 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Reducer from './containers/Reducer';
-import About from './containers/About';
+import Home from './containers/Home';
 
 import reactLogo from './assets/React-icon.png';
 
@@ -18,8 +17,7 @@ const App = () => (
           <h1>Color Reducer</h1>
         </div>
         <Switch>
-          <Route exact path="/" component={Reducer} />
-          <Route path="/about" component={About} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </main>
     </HashRouter>
