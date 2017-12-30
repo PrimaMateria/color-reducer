@@ -1,5 +1,6 @@
 import React from 'react'
 import hexColorRegex from 'hex-color-regex'
+import './_ReducerInput.scss'
 
 class ReducerInput extends React.Component {
   constructor(props) {
@@ -45,13 +46,18 @@ class ReducerInput extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Hex colors (per row)
+          Hex colors (separated with whitespace)
+          <br/>
           <textarea name="colorsString" value={this.state.colorsString} onChange={this.handleChange}/>
         </label>
+        <br/>
+        <br/>
         <label>
-          Maximal deltaE distance between colors
+          Maximal deltaE distance between colors:&nbsp;
           <input name="maxDistance" type="number" value={this.state.maxDistance} onChange={this.handleChange} min="0"/>
         </label>
+        <br/>
+        <br/>
         <input type="submit" value="Reduce"/>
       </form>
     )
