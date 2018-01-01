@@ -9,7 +9,6 @@ class ColorList extends React.Component {
 
   render() {
     let clusters = this.props.clusters;
-    console.log(clusters);
 
     let rows = [];
     for (let i in clusters) {
@@ -20,10 +19,10 @@ class ColorList extends React.Component {
 
         for (let j in cluster) {
           let color = cluster[j];
-          colors.push(ColorDiv(color));
+          colors.push(ColorDiv(color, i+'-'+j));
         }
 
-        let resultColor = ColorDiv(mix(cluster));
+        let resultColor = ColorDiv(mix(cluster), i);
 
         rows.push(
           <div key={"cluster" + i} className="card">
@@ -44,15 +43,15 @@ class ColorList extends React.Component {
   }
 }
 
-function ColorDiv(color) {
+function ColorDiv(color, key) {
 
   let previewStyle = {
     backgroundColor: color
   };
 
   return <div key={color}>
-    <div className="preview" style={previewStyle}></div>
-    <div className="name">{color}</div>
+    <div className="preview" key={'preview-'+key} style={previewStyle}></div>
+    <div className="name" key={'name-'+key}>{color}</div>
   </div>
 }
 

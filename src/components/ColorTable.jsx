@@ -7,17 +7,15 @@ class ColorTable extends React.Component {
   }
 
   render() {
-    console.log("color table render")
-    console.log(this.props.maxDistance)
-
     let tbody = [];
     tbody.push(<HeaderNameRow key="nameX" colors={this.props.colors}/>);
     tbody.push(<HeaderPreviewRow key="previewX" colors={this.props.colors}/>);
 
-    for (const x in this.props.matrice) {
+    for (const x in this.props.colors) {
       tbody.push(
         <Row
           key={x}
+          rownum={x}
           color={this.props.colors[x]}
           distances={this.props.matrice[x]}
           maxDistance={this.props.maxDistance}
@@ -50,7 +48,7 @@ class HeaderNameRow extends React.Component {
 
     for (const i in this.props.colors) {
       let color = this.props.colors[i];
-      cells.push(<NameCell key={"name-x-"+color} color={color}/>);
+      cells.push(<NameCell key={"name-x-"+color+"-"+i} color={color}/>);
     }
 
     return (
@@ -74,7 +72,7 @@ class HeaderPreviewRow extends React.Component {
       for (const i in this.props.colors) {
         let color = this.props.colors[i];
 
-        cells.push(<PreviewCell key={"preview-x-"+color} color={color}/>);
+        cells.push(<PreviewCell key={"preview-x-"+color+"-"+i} color={color}/>);
       }
 
       return (
@@ -120,9 +118,10 @@ class Row extends React.Component {
     let cells = [];
     let color = this.props.color;
     let distances = this.props.distances;
+    let rownum = this.props.rownum;
 
-    cells.push(<NameCell key={"name-y-"+color} color={color}/>);
-    cells.push(<PreviewCell key={"preview-y-"+color} color={color}/>);
+    cells.push(<NameCell key={"name-y-"+color+"-"+rownum} color={color}/>);
+    cells.push(<PreviewCell key={"preview-y-"+color+"-"+rownum} color={color}/>);
 
     for (const i in distances) {
       let distance = distances[i];
@@ -134,7 +133,7 @@ class Row extends React.Component {
 
       cells.push(
         <td
-          key={i}
+          key={i+"-"+rownum}
           className={distanceClass}>
           {distances[i].toFixed(2)}
         </td>)

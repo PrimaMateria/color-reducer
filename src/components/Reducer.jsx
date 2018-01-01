@@ -5,6 +5,7 @@ import ReducerInput from './ReducerInput'
 import createDeltaEMatrice from '../lib/createDeltaEMatrice'
 import reduce from '../lib/reduce'
 import blend from '../lib/blend'
+import sort from '../lib/sort'
 
 class Reducer extends React.Component {
   constructor(props) {
@@ -17,13 +18,21 @@ class Reducer extends React.Component {
   }
 
   handleInputChange(colors, maxDistance) {
-    this.state.matrice = createDeltaEMatrice(colors);
-    this.state.clusters = reduce(colors, maxDistance);
 
-    this.state.reducedColors = blend(this.state.clusters);
-    this.state.reducedMatrice = createDeltaEMatrice(this.state.reducedColors);
+    let sortedColors = sort(colors);
+    let matrice = createDeltaEMatrice(sortedColors);
+    let clusters = reduce(sortedColors, maxDistance);
+    let reducedColors = sort(blend(clusters));
+    let reducedMatrice = createDeltaEMatrice(reducedColors);
 
-    this.setState({colors, maxDistance});
+    this.setState({
+      colors: sortedColors,
+      maxDistance: maxDistance,
+      matrice: matrice,
+      clusters: clusters,
+      reducedColors: reducedColors,
+      reducedMatrice: reducedMatrice
+    });
   }
 
   render() {
@@ -48,8 +57,7 @@ class Reducer extends React.Component {
     return (
       <div>
         <h2>Input</h2>
-        <ReducerInput onInputChange={this.handleInputChange}/>
-        {report}
+        <ReducerInput onInputChange={this.handleInputChange}/> {report}
       </div>
     );
   }
